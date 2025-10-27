@@ -1,4 +1,5 @@
 const emailRegex = require("../helpers/emailRegex");
+const Userlist = require("../models/userSchema");
 
 const registrationController = (req, res) => {
   let { username, email, password } = req.body
@@ -12,7 +13,14 @@ const registrationController = (req, res) => {
   } else if (!password) {
     res.send({error:"Please give your password"});
   }else {
-    res.send({success:"All Done"});
+    let data = new Userlist({
+      username, 
+      password,
+      email,
+    })
+    data.save()
+    res.send(data);
+    
   }
 };
 

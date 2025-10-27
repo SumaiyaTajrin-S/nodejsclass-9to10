@@ -1,9 +1,8 @@
 const express = require('express')
+const loginController = require('../../../controllers/loginController')
 const route = express.Router()
 
-route.get('/login', (req, res) => {
-  res.send('Hi ami login!???')
-})
+route.get('/login',loginController)
 
 
 
